@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CardSense — credit card expense manager for Android</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=IBM+Plex+Mono:wght@400;600&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#1F3BFF}a:hover{color:#000000}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:4px solid #1F3BFF;outline-offset:3px}
+.cs-btn{transition:transform .08s ease, box-shadow .08s ease}
+.cs-btn:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 #000 !important}
+.cs-btn:active{transform:translate(6px,6px);box-shadow:0 0 0 #000 !important}
+.cs-nav a:hover{background:#FFE600;color:#000}
+@media (prefers-reduced-motion: reduce){.cs-btn{transition:none}.cs-btn:hover,.cs-btn:active{transform:none}}
+</style>
+</helmet>
+<div style="background: #FFFFFF; color: #000000; font-family: 'Archivo', 'Arial Narrow', Arial, sans-serif; font-size: 18px; line-height: 1.5; min-height: 100vh">
+
+<!-- HEADER -->
+<header style="border-bottom: 4px solid #000000; background: #FFFFFF">
+<div style="max-width: 1360px; margin: 0 auto; padding: 14px clamp(16px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="display: flex; align-items: center; gap: 12px; color: #000000; text-decoration: none">
+<img src="./assets/5c03b1ee60d852153d2723a1b6ce33c4.jpg" alt="" style="width: 48px; height: 48px; border: 3px solid #000000; display: block; object-fit: cover">
+<span style="font-size: 30px; font-weight: 900; font-stretch: 75%; letter-spacing: -0.01em; line-height: 1">CardSense</span>
+</a>
+<nav class="cs-nav" aria-label="Sections" style="display: flex; flex-wrap: wrap; border: 3px solid #000000">
+<a href="#what" style="padding: 10px 16px; min-height: 44px; box-sizing: border-box; display: flex; align-items: center; color: #000000; text-decoration: none; font-weight: 700; border-right: 3px solid #000000">What it does</a>
+<a href="#why" style="padding: 10px 16px; min-height: 44px; box-sizing: border-box; display: flex; align-items: center; color: #000000; text-decoration: none; font-weight: 700; border-right: 3px solid #000000">Why</a>
+<a href="#how" style="padding: 10px 16px; min-height: 44px; box-sizing: border-box; display: flex; align-items: center; color: #000000; text-decoration: none; font-weight: 700; border-right: 3px solid #000000">How</a>
+<a href="#when" style="padding: 10px 16px; min-height: 44px; box-sizing: border-box; display: flex; align-items: center; color: #000000; text-decoration: none; font-weight: 700; border-right: 3px solid #000000">When</a>
+<a href="#where" style="padding: 10px 16px; min-height: 44px; box-sizing: border-box; display: flex; align-items: center; color: #000000; text-decoration: none; font-weight: 700; border-right: 3px solid #000000">Where</a>
+<a href="#get" style="padding: 10px 16px; min-height: 44px; box-sizing: border-box; display: flex; align-items: center; color: #FFFFFF; background: #000000; text-decoration: none; font-weight: 700">Get the app</a>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="top" style="border-bottom: 4px solid #000000">
+<div style="max-width: 1360px; margin: 0 auto; padding: clamp(40px, 6vw, 88px) clamp(16px, 4vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: clamp(32px, 5vw, 72px); align-items: center">
+<div style="display: flex; flex-direction: column; gap: 28px">
+<h1 style="margin: 0; font-size: clamp(56px, 8.4vw, 132px); font-weight: 900; font-stretch: 62%; line-height: 0.88; letter-spacing: -0.015em">Five days. Three days. One day. Due today.</h1>
+<p style="margin: 0; max-width: 34em; font-size: clamp(19px, 1.6vw, 23px); line-height: 1.45">CardSense is an Android app that keeps track of every credit card you carry: what you spent, what you owe, how close you are to each limit and when each bill is due. Then it reminds you before it is too late. Everything stays on your phone.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; padding-top: 8px">
+<a class="cs-btn" href="#get" style="display: inline-flex; align-items: center; min-height: 60px; padding: 0 30px; background: #1F3BFF; color: #FFFFFF; border: 4px solid #000000; box-shadow: 6px 6px 0 #000000; font-weight: 800; font-size: 21px; text-decoration: none">Get the app</a>
+<a class="cs-btn" href="#how" style="display: inline-flex; align-items: center; min-height: 60px; padding: 0 30px; background: #FFFFFF; color: #000000; border: 4px solid #000000; box-shadow: 6px 6px 0 #000000; font-weight: 800; font-size: 21px; text-decoration: none">See how it works</a>
+</div>
+</div>
+
+<div role="img" aria-label="CardSense sends payment reminders 5, 3 and 1 day before the due date, and on the due date" style="border: 4px solid #000000; box-shadow: 14px 14px 0 #000000; background: #FFFFFF">
+<div style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 4px solid #000000; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px">
+<span>Payment reminders</span><span>Checked daily, ~9:00</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+<div style="border-right: 4px solid #000000; padding: 16px 12px 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; min-height: clamp(170px, 20vw, 280px)">
+<span style="font-size: clamp(84px, 11vw, 176px); font-weight: 900; font-stretch: 62%; line-height: 0.8">5</span>
+<span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.3">days to go</span>
+</div>
+<div style="border-right: 4px solid #000000; padding: 16px 12px 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px">
+<span style="font-size: clamp(84px, 11vw, 176px); font-weight: 900; font-stretch: 62%; line-height: 0.8">3</span>
+<span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.3">days to go</span>
+</div>
+<div style="border-right: 4px solid #000000; padding: 16px 12px 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px">
+<span style="font-size: clamp(84px, 11vw, 176px); font-weight: 900; font-stretch: 62%; line-height: 0.8">1</span>
+<span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.3">day to go</span>
+</div>
+<div style="background: #FFE600; padding: 16px 12px 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px">
+<span style="font-size: clamp(84px, 11vw, 176px); font-weight: 900; font-stretch: 62%; line-height: 0.8">0</span>
+<span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.3; font-weight: 600">due today</span>
+</div>
+</div>
+<p style="margin: 0; padding: 14px 16px; border-top: 4px solid #000000; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; line-height: 1.5">Skipped when nothing is owed or the cycle is already paid. Never sent twice.</p>
+</div>
+</div>
+</section>
+
+<!-- FACT BAND -->
+<div style="background: #000000; color: #FFFFFF; border-bottom: 4px solid #000000">
+<div style="max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr))">
+<div style="padding: 22px clamp(16px, 2vw, 28px); border-right: 2px solid #FFFFFF; font-size: 24px; font-weight: 800; font-stretch: 75%; line-height: 1.1">No account</div>
+<div style="padding: 22px clamp(16px, 2vw, 28px); border-right: 2px solid #FFFFFF; font-size: 24px; font-weight: 800; font-stretch: 75%; line-height: 1.1">No cloud sync</div>
+<div style="padding: 22px clamp(16px, 2vw, 28px); border-right: 2px solid #FFFFFF; font-size: 24px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Works offline</div>
+<div style="padding: 22px clamp(16px, 2vw, 28px); border-right: 2px solid #FFFFFF; font-size: 24px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Android 7.0 and up</div>
+<div style="padding: 22px clamp(16px, 2vw, 28px); font-size: 24px; font-weight: 800; font-stretch: 75%; line-height: 1.1; color: #FFE600">Six currencies, ₹ first</div>
+</div>
+</div>
+
+<!-- WHAT -->
+<section id="what" style="border-bottom: 4px solid #000000">
+<div style="max-width: 1360px; margin: 0 auto; padding: clamp(48px, 7vw, 104px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px)">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 24px 48px; align-items: end">
+<h2 style="margin: 0; font-size: clamp(76px, 13vw, 200px); font-weight: 900; font-stretch: 62%; line-height: 0.82; letter-spacing: -0.02em">What it does</h2>
+<p style="margin: 0; max-width: 32em; font-size: clamp(19px, 1.5vw, 22px)">One app for cards, spending, budgets and bills. Read it like a statement: every line below is something CardSense does for you.</p>
+</div>
+
+<div style="border: 4px solid #000000; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 16px; line-height: 1.55">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding: 16px 20px; background: #000000; color: #FFFFFF">
+<span style="font-weight: 600">Statement of features</span><span>CardSense 3.0</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #000000">
+<div style="flex: 0 1 240px; padding: 18px 20px; font-family: 'Archivo', Arial, sans-serif; font-size: 26px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Home</div>
+<div style="flex: 1 1 380px; padding: 18px 20px">Total outstanding, available credit, utilisation, this month’s spend, budget left and your next payment, on one screen, with a greeting by name.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #000000">
+<div style="flex: 0 1 240px; padding: 18px 20px; font-family: 'Archivo', Arial, sans-serif; font-size: 26px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Cards</div>
+<div style="flex: 1 1 380px; padding: 18px 20px">Every card with its bank, credit limit, billing day and due day. Only the last 4 digits are stored.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #000000">
+<div style="flex: 0 1 240px; padding: 18px 20px; font-family: 'Archivo', Arial, sans-serif; font-size: 26px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Transactions</div>
+<div style="flex: 1 1 380px; padding: 18px 20px">Log spends, refunds and payments. Search and filter by card, category, date or amount. Import a CSV from your bank statement instead of typing each line.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #000000">
+<div style="flex: 0 1 240px; padding: 18px 20px; font-family: 'Archivo', Arial, sans-serif; font-size: 26px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Budgets</div>
+<div style="flex: 1 1 380px; padding: 18px 20px">A monthly limit for each category. You see how much a new spend will use before you save it, and get a warning at 80% and another at 100%.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #000000">
+<div style="flex: 0 1 240px; padding: 18px 20px; font-family: 'Archivo', Arial, sans-serif; font-size: 26px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Insights</div>
+<div style="flex: 1 1 380px; padding: 18px 20px">Your biggest spending category, what changed since last month, cards running above 70% of their limit, and transactions that look unusually large.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #000000">
+<div style="flex: 0 1 240px; padding: 18px 20px; font-family: 'Archivo', Arial, sans-serif; font-size: 26px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Reports</div>
+<div style="flex: 1 1 380px; padding: 18px 20px">Charts by category and month. Export to CSV, Excel or a printable report.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #000000">
+<div style="flex: 0 1 240px; padding: 18px 20px; font-family: 'Archivo', Arial, sans-serif; font-size: 26px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Notifications</div>
+<div style="flex: 1 1 380px; padding: 18px 20px">An in-app inbox plus phone alerts on four channels you can switch on or off: payments, budgets and utilisation, activity, security.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; border-bottom: 2px solid #000000">
+<div style="flex: 0 1 240px; padding: 18px 20px; font-family: 'Archivo', Arial, sans-serif; font-size: 26px; font-weight: 800; font-stretch: 75%; line-height: 1.1">App lock</div>
+<div style="flex: 1 1 380px; padding: 18px 20px">A 4-digit PIN, fingerprint or face unlock, and a blank preview in the recent-apps screen.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; border-bottom: 4px solid #000000">
+<div style="flex: 0 1 240px; padding: 18px 20px; font-family: 'Archivo', Arial, sans-serif; font-size: 26px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Backup</div>
+<div style="flex: 1 1 380px; padding: 18px 20px">Save everything to one file and restore it on any phone.</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding: 18px 20px; background: #FFE600; font-weight: 600; font-size: 18px">
+<span>Sent to the cloud</span><span>0 bytes</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="border-bottom: 4px solid #000000; background: #FFE600">
+<div style="max-width: 1360px; margin: 0 auto; padding: clamp(48px, 7vw, 104px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px)">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 24px 48px; align-items: end">
+<h2 style="margin: 0; font-size: clamp(96px, 17vw, 260px); font-weight: 900; font-stretch: 62%; line-height: 0.8; letter-spacing: -0.02em">Why</h2>
+<p style="margin: 0; max-width: 32em; font-size: clamp(19px, 1.5vw, 22px)">Credit cards are easy to use and easy to lose track of. Each one has its own limit, billing day and due date, and forgetting any of them costs money. These are the problems CardSense was built for.</p>
+</div>
+
+<div style="display: flex; flex-direction: column; border: 4px solid #000000; background: #FFFFFF">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); border-bottom: 4px solid #000000">
+<p style="margin: 0; padding: clamp(20px, 2.4vw, 32px); font-size: clamp(32px, 3.6vw, 52px); font-weight: 900; font-stretch: 70%; line-height: 1; border-right: 4px solid #000000">A due date slips past.</p>
+<p style="margin: 0; padding: clamp(20px, 2.4vw, 32px); align-self: center">Late fees and interest follow. CardSense checks every card each morning and reminds you 5, 3 and 1 day before the due date, and again on the day.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); border-bottom: 4px solid #000000">
+<p style="margin: 0; padding: clamp(20px, 2.4vw, 32px); font-size: clamp(32px, 3.6vw, 52px); font-weight: 900; font-stretch: 70%; line-height: 1; border-right: 4px solid #000000">Your balance creeps toward the limit.</p>
+<p style="margin: 0; padding: clamp(20px, 2.4vw, 32px); align-self: center">High utilisation can hurt your credit score. CardSense shows utilisation for each card, flags it above 70% and sends a notification at 90%.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); border-bottom: 4px solid #000000">
+<p style="margin: 0; padding: clamp(20px, 2.4vw, 32px); font-size: clamp(32px, 3.6vw, 52px); font-weight: 900; font-stretch: 70%; line-height: 1; border-right: 4px solid #000000">The budget you set gets forgotten.</p>
+<p style="margin: 0; padding: clamp(20px, 2.4vw, 32px); align-self: center">Every category gets a monthly limit. When you add a spend, CardSense shows what it does to that budget, and tells you at 80% and at 100%.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); border-bottom: 4px solid #000000">
+<p style="margin: 0; padding: clamp(20px, 2.4vw, 32px); font-size: clamp(32px, 3.6vw, 52px); font-weight: 900; font-stretch: 70%; line-height: 1; border-right: 4px solid #000000">Two cards, two cycles, one headache.</p>
+<p style="margin: 0; padding: clamp(20px, 2.4vw, 32px); align-self: center">Billing and due days are tracked per card and understand short months, so a due day of 31 lands on the 30th or 28th when it has to. You also get a note on statement day.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr))">
+<p style="margin: 0; padding: clamp(20px, 2.4vw, 32px); font-size: clamp(32px, 3.6vw, 52px); font-weight: 900; font-stretch: 70%; line-height: 1; border-right: 4px solid #000000">Money apps want your data.</p>
+<p style="margin: 0; padding: clamp(20px, 2.4vw, 32px); align-self: center">CardSense does not. There is no sign-up, no server and no tracking. Android’s automatic cloud backup is switched off for this app.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- HOW -->
+<section id="how" style="border-bottom: 4px solid #000000">
+<div style="max-width: 1360px; margin: 0 auto; padding: clamp(48px, 7vw, 104px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px)">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 24px 48px; align-items: end">
+<h2 style="margin: 0; font-size: clamp(96px, 17vw, 260px); font-weight: 900; font-stretch: 62%; line-height: 0.8; letter-spacing: -0.02em">How</h2>
+<p style="margin: 0; max-width: 32em; font-size: clamp(19px, 1.5vw, 22px)">Six steps from install to a month you understand. Setting up takes a minute; after that, CardSense does the remembering.</p>
+</div>
+
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); border-top: 4px solid #000000; border-left: 4px solid #000000">
+<li style="display: flex; gap: 20px; padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<span aria-hidden="true" style="flex: none; font-size: 96px; font-weight: 900; font-stretch: 62%; line-height: 0.8; width: 56px">1</span>
+<div><h3 style="margin: 0 0 6px; font-size: 28px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Open it and say hello</h3><p style="margin: 0">Enter your name, and a nickname or email if you like. No account, no password. A fresh install starts empty.</p></div>
+</li>
+<li style="display: flex; gap: 20px; padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<span aria-hidden="true" style="flex: none; font-size: 96px; font-weight: 900; font-stretch: 62%; line-height: 0.8; width: 56px">2</span>
+<div><h3 style="margin: 0 0 6px; font-size: 28px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Add your cards</h3><p style="margin: 0">Card name, bank, last 4 digits, credit limit, billing day, due day and any amount already owed.</p></div>
+</li>
+<li style="display: flex; gap: 20px; padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<span aria-hidden="true" style="flex: none; font-size: 96px; font-weight: 900; font-stretch: 62%; line-height: 0.8; width: 56px">3</span>
+<div><h3 style="margin: 0 0 6px; font-size: 28px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Record what you spend</h3><p style="margin: 0">Add transactions as they happen, or import your statement as a CSV. Indian DD/MM/YYYY dates are understood.</p></div>
+</li>
+<li style="display: flex; gap: 20px; padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<span aria-hidden="true" style="flex: none; font-size: 96px; font-weight: 900; font-stretch: 62%; line-height: 0.8; width: 56px">4</span>
+<div><h3 style="margin: 0 0 6px; font-size: 28px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Set budgets</h3><p style="margin: 0">Pick a monthly limit for food, shopping, bills, rent or any category you create.</p></div>
+</li>
+<li style="display: flex; gap: 20px; padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<span aria-hidden="true" style="flex: none; font-size: 96px; font-weight: 900; font-stretch: 62%; line-height: 0.8; width: 56px">5</span>
+<div><h3 style="margin: 0 0 6px; font-size: 28px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Let it watch</h3><p style="margin: 0">Payment reminders, budget warnings, high-utilisation alerts and unusual-spend notes arrive on their own.</p></div>
+</li>
+<li style="display: flex; gap: 20px; padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<span aria-hidden="true" style="flex: none; font-size: 96px; font-weight: 900; font-stretch: 62%; line-height: 0.8; width: 56px">6</span>
+<div><h3 style="margin: 0 0 6px; font-size: 28px; font-weight: 800; font-stretch: 75%; line-height: 1.1">Review and back up</h3><p style="margin: 0">Check insights at month end, export a report, and save a backup file somewhere safe.</p></div>
+</li>
+</ol>
+
+<!-- Utilisation check -->
+<div style="border: 4px solid #000000; box-shadow: 14px 14px 0 #1F3BFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr))">
+<div style="padding: clamp(20px, 3vw, 36px); display: flex; flex-direction: column; gap: 20px; border-right: 4px solid #000000">
+<h3 style="margin: 0; font-size: clamp(36px, 4vw, 56px); font-weight: 900; font-stretch: 65%; line-height: 0.95">Try the utilisation check</h3>
+<p style="margin: 0">Utilisation is how much of a card’s limit you are using. Type in one of your cards and see what CardSense would do.</p>
+<label for="cs-limit" style="display: flex; flex-direction: column; gap: 8px; font-weight: 700">Credit limit (₹)
+<input id="cs-limit" type="number" inputmode="numeric" min="0" step="1000" value="{{limitStr}}" onChange="{{onLimit}}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 22px; padding: 12px 14px; min-height: 56px; box-sizing: border-box; border: 4px solid #000000; border-radius: 0; background: #FFFFFF; color: #000000; width: 100%">
+</label>
+<label for="cs-owed" style="display: flex; flex-direction: column; gap: 8px; font-weight: 700">Amount you owe now (₹)
+<input id="cs-owed" type="number" inputmode="numeric" min="0" step="500" value="{{owedStr}}" onChange="{{onOwed}}" style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 22px; padding: 12px 14px; min-height: 56px; box-sizing: border-box; border: 4px solid #000000; border-radius: 0; background: #FFFFFF; color: #000000; width: 100%">
+</label>
+</div>
+<div style="padding: clamp(20px, 3vw, 36px); display: flex; flex-direction: column; gap: 20px; justify-content: space-between" aria-live="polite">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px">
+<span style="font-size: clamp(96px, 12vw, 176px); font-weight: 900; font-stretch: 62%; line-height: 0.8">{{pctText}}</span>
+<span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 16px">Available: {{availText}}</span>
+</div>
+<div style="position: relative; height: 40px; border: 4px solid #000000; background: #FFFFFF">
+<div style="height: 100%; width: {{barW}}; background: {{barColor}}"></div>
+<div aria-hidden="true" style="position: absolute; top: -4px; bottom: -4px; left: 70%; width: 4px; background: #000000"></div>
+<div aria-hidden="true" style="position: absolute; top: -4px; bottom: -4px; left: 90%; width: 4px; background: #000000"></div>
+</div>
+<div aria-hidden="true" style="position: relative; height: 18px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 14px; margin-top: -12px">
+<span style="position: absolute; left: 70%; transform: translateX(-50%)">70%</span>
+<span style="position: absolute; left: 90%; transform: translateX(-50%)">90%</span>
+</div>
+<div style="border: 4px solid #000000; padding: 16px 18px; background: {{verdictBg}}; color: {{verdictInk}}">
+<p style="margin: 0 0 4px; font-size: 26px; font-weight: 900; font-stretch: 75%; line-height: 1.1">{{verdict}}</p>
+<p style="margin: 0">{{verdictNote}}</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WHEN -->
+<section id="when" style="border-bottom: 4px solid #000000; background: #000000; color: #FFFFFF">
+<div style="max-width: 1360px; margin: 0 auto; padding: clamp(48px, 7vw, 104px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px)">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 24px 48px; align-items: end">
+<h2 style="margin: 0; font-size: clamp(96px, 17vw, 260px); font-weight: 900; font-stretch: 62%; line-height: 0.8; letter-spacing: -0.02em">When</h2>
+<p style="margin: 0; max-width: 32em; font-size: clamp(19px, 1.5vw, 22px)">CardSense earns its place on your phone at these moments.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0; border-top: 4px solid #FFFFFF; border-left: 4px solid #FFFFFF">
+<div style="padding: 28px 24px; border-right: 4px solid #FFFFFF; border-bottom: 4px solid #FFFFFF; background: #FFE600; color: #000000; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 34px; font-weight: 900; font-stretch: 70%; line-height: 1">You carry two or more cards</h3>
+<p style="margin: 0">Different banks, different billing days, different due dates. One home screen with all of them.</p>
+</div>
+<div style="padding: 28px 24px; border-right: 4px solid #FFFFFF; border-bottom: 4px solid #FFFFFF; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 34px; font-weight: 900; font-stretch: 70%; line-height: 1">The week a bill is due</h3>
+<p style="margin: 0">Reminders start five days out and stop once the cycle is paid.</p>
+</div>
+<div style="padding: 28px 24px; border-right: 4px solid #FFFFFF; border-bottom: 4px solid #FFFFFF; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 34px; font-weight: 900; font-stretch: 70%; line-height: 1">Before a big purchase</h3>
+<p style="margin: 0">Check the available credit on each card and how close it is to its limit before you pay.</p>
+</div>
+<div style="padding: 28px 24px; border-right: 4px solid #FFFFFF; border-bottom: 4px solid #FFFFFF; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 34px; font-weight: 900; font-stretch: 70%; line-height: 1">When the statement arrives</h3>
+<p style="margin: 0">Import the CSV and check it against what you logged. No retyping.</p>
+</div>
+<div style="padding: 28px 24px; border-right: 4px solid #FFFFFF; border-bottom: 4px solid #FFFFFF; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 34px; font-weight: 900; font-stretch: 70%; line-height: 1">At month end</h3>
+<p style="margin: 0">See where the money went by category and what changed since last month.</p>
+</div>
+<div style="padding: 28px 24px; border-right: 4px solid #FFFFFF; border-bottom: 4px solid #FFFFFF; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 34px; font-weight: 900; font-stretch: 70%; line-height: 1">Living on a student budget</h3>
+<p style="margin: 0">Hostel, mess, rent, Uber-Rapido, cold drinks and gaming are ready-made categories.</p>
+</div>
+<div style="padding: 28px 24px; border-right: 4px solid #FFFFFF; border-bottom: 4px solid #FFFFFF; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 34px; font-weight: 900; font-stretch: 70%; line-height: 1">Switching phones</h3>
+<p style="margin: 0">Make a backup file on the old phone and restore it on the new one.</p>
+</div>
+<div style="padding: 28px 24px; border-right: 4px solid #FFFFFF; border-bottom: 4px solid #FFFFFF; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 34px; font-weight: 900; font-stretch: 70%; line-height: 1">No signal at all</h3>
+<p style="margin: 0">Everything works offline, including reminders and reports.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WHERE -->
+<section id="where" style="border-bottom: 4px solid #000000">
+<div style="max-width: 1360px; margin: 0 auto; padding: clamp(48px, 7vw, 104px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px)">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 24px 48px; align-items: end">
+<h2 style="margin: 0; font-size: clamp(96px, 17vw, 260px); font-weight: 900; font-stretch: 62%; line-height: 0.8; letter-spacing: -0.02em">Where</h2>
+<p style="margin: 0; font-size: clamp(36px, 4.4vw, 64px); font-weight: 900; font-stretch: 70%; line-height: 0.95">On your phone. <span style="background: #FFE600; box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 6px">Nowhere else.</span></p>
+</div>
+
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); border-top: 4px solid #000000; border-left: 4px solid #000000">
+<div style="padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<dt style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; font-weight: 600; margin-bottom: 8px">Runs on</dt>
+<dd style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.3">Android 7.0 or newer, phones in portrait</dd>
+</div>
+<div style="padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<dt style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; font-weight: 600; margin-bottom: 8px">Internet</dt>
+<dd style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.3">Not needed. It works fully offline.</dd>
+</div>
+<div style="padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<dt style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; font-weight: 600; margin-bottom: 8px">Your data</dt>
+<dd style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.3">Stored on the device only. Nothing is copied to the cloud.</dd>
+</div>
+<div style="padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<dt style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; font-weight: 600; margin-bottom: 8px">Card details</dt>
+<dd style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.3">Last 4 digits only. Never the full number, CVV or PIN.</dd>
+</div>
+<div style="padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<dt style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; font-weight: 600; margin-bottom: 8px">App lock</dt>
+<dd style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.3">PIN saved as a salted SHA-256 hash, plus fingerprint or face unlock</dd>
+</div>
+<div style="padding: 24px; border-right: 4px solid #000000; border-bottom: 4px solid #000000">
+<dt style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; font-weight: 600; margin-bottom: 8px">Currencies</dt>
+<dd style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.3">INR, USD, EUR, GBP, AED and SGD</dd>
+</div>
+</dl>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; padding: 20px 24px; border: 4px solid #000000; background: #FFFFFF; box-shadow: 8px 8px 0 #000000">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="square" style="flex: none"><path d="M12 3 2 21h20L12 3z"></path><path d="M12 10v5"></path><path d="M12 18v.5"></path></svg>
+<p style="margin: 0; flex: 1 1 420px; font-size: 19px"><strong>Because nothing leaves your phone, uninstalling the app or clearing its data erases everything.</strong> Make a backup from More › Backup &amp; Restore and keep the file somewhere safe.</p>
+</div>
+</div>
+</section>
+
+<!-- GET -->
+<section id="get" style="border-bottom: 4px solid #000000; background: #1F3BFF; color: #FFFFFF">
+<div style="max-width: 1360px; margin: 0 auto; padding: clamp(48px, 7vw, 104px) clamp(16px, 4vw, 48px); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px)">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 24px 48px; align-items: end">
+<h2 style="margin: 0; font-size: clamp(76px, 13vw, 200px); font-weight: 900; font-stretch: 62%; line-height: 0.82; letter-spacing: -0.02em">Get CardSense</h2>
+<p style="margin: 0; font-size: clamp(36px, 4.4vw, 64px); font-weight: 900; font-stretch: 70%; line-height: 0.95">Now on <span style="background: #FFE600; color: #000000; box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 6px">Google Play.</span> App Store coming soon.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 32px">
+<div style="background: #FFFFFF; color: #000000; border: 4px solid #000000; box-shadow: 12px 12px 0 #000000; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 20px; border-bottom: 4px solid #000000; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px"><span>For Android phones</span><span style="background: #000000; color: #FFFFFF; border: 3px solid #000000; padding: 4px 10px; font-weight: 600">Available now</span></div>
+<div style="padding: clamp(20px, 3vw, 36px); display: flex; flex-direction: column; gap: 18px">
+<h3 style="margin: 0; font-size: clamp(56px, 6.4vw, 96px); font-weight: 900; font-stretch: 62%; line-height: 0.85">Google Play</h3>
+<p style="margin: 0">Install CardSense from the Play Store on any phone running Android 7.0 or newer, and add your first card in about a minute.</p>
+<a class="cs-btn" href="https://play.google.com/store/apps/details?id=com.ledgerandline.ccem" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 84px; padding: 12px 24px; background: #000000; color: #FFFFFF; border: 4px solid #000000; box-shadow: 6px 6px 0 #1F3BFF; text-decoration: none"><span style="display: flex; flex-direction: column; line-height: 1.1"><span style="font-size: 16px; font-weight: 600">Get it on</span><span style="font-size: 36px; font-weight: 900; font-stretch: 75%">Google Play</span></span><span style="background: #FFE600; color: #000000; border: 3px solid #FFE600; padding: 6px 12px; font-size: 18px; font-weight: 800; white-space: nowrap">Install</span></a>
+</div>
+</div>
+<div style="background: #FFFFFF; color: #000000; border: 4px solid #000000; box-shadow: 12px 12px 0 #000000; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 20px; border-bottom: 4px solid #000000; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px"><span>For iPhone</span><span style="background: #FFE600; border: 3px solid #000000; padding: 4px 10px; font-weight: 600">Coming soon</span></div>
+<div style="padding: clamp(20px, 3vw, 36px); display: flex; flex-direction: column; gap: 18px">
+<h3 style="margin: 0; font-size: clamp(56px, 6.4vw, 96px); font-weight: 900; font-stretch: 62%; line-height: 0.85">App Store</h3>
+<p style="margin: 0">CardSense is on its way to the Apple App Store. Once it is live, search for CardSense on your iPhone and install it from there.</p>
+<button type="button" disabled="" aria-disabled="true" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; min-height: 84px; padding: 12px 24px; background: #FFFFFF; color: #000000; border: 4px dashed #000000; border-radius: 0; font-family: 'Archivo', Arial, sans-serif; text-align: left; cursor: not-allowed"><span style="display: flex; flex-direction: column; line-height: 1.1"><span style="font-size: 16px; font-weight: 600">Download on the</span><span style="font-size: 36px; font-weight: 900; font-stretch: 75%">App Store</span></span><span style="background: #FFE600; border: 3px solid #000000; padding: 6px 12px; font-size: 18px; font-weight: 800; white-space: nowrap">Coming soon</span></button>
+</div>
+</div>
+</div>
+<p style="margin: 0; max-width: 40em; font-size: clamp(19px, 1.5vw, 22px)">The App Store button will switch on with a direct link on launch day. Whichever phone you use, allow notifications at the end of setup so payment reminders can reach you.</p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div style="max-width: 1360px; margin: 0 auto; padding: clamp(32px, 5vw, 64px) clamp(16px, 4vw, 48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 32px 48px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: clamp(56px, 7vw, 104px); font-weight: 900; font-stretch: 62%; line-height: 0.85">CardSense</span>
+<p style="margin: 0; max-width: 30em">Smart credit card expense management for Android. Made with Kotlin, Android WebView, HTML, CSS and JavaScript, Chart.js, SheetJS, WorkManager and BiometricPrompt.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; justify-content: flex-end; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 15px; line-height: 1.6">
+<p style="margin: 0">Built with ideation and structural guidance from ChatGPT and technical implementation support from Claude.</p>
+<p style="margin: 0">CardSense is an independent app. It is not an official product of, or affiliated with, OpenAI or Anthropic.</p>
+<a href="#top" style="font-family: 'Archivo', Arial, sans-serif; font-size: 18px; font-weight: 700">Back to top</a>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7600}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const limitStr = s.limit !== undefined ? s.limit : '100000';
+    const owedStr = s.owed !== undefined ? s.owed : '72000';
+    const L = Math.max(parseFloat(limitStr) || 0, 0);
+    const O = Math.max(parseFloat(owedStr) || 0, 0);
+    const pct = L > 0 ? (O / L) * 100 : 0;
+    const inr = (n) => '₹' + Math.round(n).toLocaleString('en-IN');
+    let verdict, verdictNote, barColor, verdictBg, verdictInk;
+    if (L <= 0) {
+      verdict = 'Enter a credit limit';
+      verdictNote = 'Utilisation needs a limit above zero.';
+      barColor = '#000000'; verdictBg = '#FFFFFF'; verdictInk = '#000000';
+    } else if (pct >= 100) {
+      verdict = 'Over the limit';
+      verdictNote = 'CardSense sends a high-utilisation notification and shows the card in red on Home.';
+      barColor = '#E10600'; verdictBg = '#E10600'; verdictInk = '#FFFFFF';
+    } else if (pct >= 90) {
+      verdict = 'High card utilisation';
+      verdictNote = 'CardSense sends a phone notification so you can pay some of it down before you reach the limit.';
+      barColor = '#E10600'; verdictBg = '#E10600'; verdictInk = '#FFFFFF';
+    } else if (pct > 70) {
+      verdict = 'Above the healthy range';
+      verdictNote = 'CardSense adds a warning to Smart insights on the Home screen.';
+      barColor = '#FFE600'; verdictBg = '#FFE600'; verdictInk = '#000000';
+    } else {
+      verdict = 'Healthy. No alert.';
+      verdictNote = 'CardSense shows the figure on Home and stays quiet.';
+      barColor = '#000000'; verdictBg = '#FFFFFF'; verdictInk = '#000000';
+    }
+    return {
+      limitStr, owedStr,
+      pctText: L > 0 ? Math.round(pct) + '%' : '—',
+      availText: inr(Math.max(L - O, 0)),
+      barW: Math.min(pct, 100).toFixed(1) + '%',
+      barColor, verdict, verdictNote, verdictBg, verdictInk,
+      onLimit: (e) => this.setState({ limit: e.target.value }),
+      onOwed: (e) => this.setState({ owed: e.target.value })
+    };
+  }
+}
+</script>
+</body>
+</html>
